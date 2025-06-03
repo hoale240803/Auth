@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./app.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">2FA Authentication</h1>
+        <div id="auth-section">
+            <div id="login-form" class="space-y-4">
+                <h2 class="text-xl font-semibold">Login</h2>
+                <input id="login-username" type="text" placeholder="Username" class="w-full p-2 border rounded">
+                <input id="login-password" type="password" placeholder="Password" class="w-full p-2 border rounded">
+                <button onclick="login()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Login</button>
+                <button onclick="showRegister()" class="w-full text-blue-500 underline">Register</button>
+            </div>
+            <div id="register-form" class="space-y-4 hidden">
+                <h2 class="text-xl font-semibold">Register</h2>
+                <input id="register-username" type="text" placeholder="Username" class="w-full p-2 border rounded">
+                <input id="register-password" type="password" placeholder="Password" class="w-full p-2 border rounded">
+                <select id="register-role" class="w-full p-2 border rounded">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <button onclick="register()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Register</button>
+                <button onclick="showLogin()" class="w-full text-blue-500 underline">Back to Login</button>
+            </div>
+            <div id="2fa-form" class="space-y-4 hidden">
+                <h2 class="text-xl font-semibold">Enter 2FA Code</h2>
+                <input id="2fa-username" type="hidden">
+                <input id="2fa-code" type="text" placeholder="6-digit code" class="w-full p-2 border rounded">
+                <button onclick="verify2FA()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Verify</button>
+            </div>
+        </div>
+        <div id="dashboard" class="hidden space-y-4">
+            <h2 class="text-xl font-semibold">Dashboard</h2>
+            <p>Welcome, <span id="username"></span>!</p>
+            <div id="2fa-status" class="mb-4"></div>
+            <div id="2fa-setup" class="hidden space-y-4">
+                <h3 class="text-lg font-semibold">Setup 2FA</h3>
+                <img id="qrcode" class="mx-auto" alt="QR Code">
+                <p>Manual Code: <span id="manual-code" class="font-mono"></span></p>
+                <p>Scan the QR code or enter the manual code in your authenticator app.</p>
+            </div>
+            <button id="toggle-2fa" onclick="toggle2FA()" class="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"></button>
+            <button onclick="getAssets()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">View Assets</button>
+            <button onclick="logout()" class="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">Logout</button>
+        </div>
+        <p id="error" class="text-red-500 mt-4 hidden"></p>
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+</html>

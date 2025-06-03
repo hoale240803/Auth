@@ -1,0 +1,6 @@
+@CustomJWTWith2FA_HostAddress = http://localhost:5003
+
+GET {{CustomJWTWith2FA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

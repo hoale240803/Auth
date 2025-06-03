@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json.schemastore.org/launchsettings.json",
+	"profiles": {
+		"http": {
+			"commandName": "Project",
+			"dotnetRunMessages": true,
+			"launchBrowser": true,
+			"launchUrl": "scalar/v1",
+			"applicationUrl": "http://localhost:5001",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		},
+		"https": {
+			"commandName": "Project",
+			"dotnetRunMessages": true,
+			"launchBrowser": false,
+			"applicationUrl": "https://localhost:7251;http://localhost:5003",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		}
+	},
+	"Resources": {
+		"Deployment": {
+			"Type": "AWS::ApiGateway::Deployment",
+			"Properties": {
+				"RestApiId": "<String>"
+			}
+		},
+		"DocumentationPart": {
+			"Type": "AWS::ApiGateway::DocumentationPart",
+			"Properties": {
+				"RestApiId": "<String>",
+				"Properties": "<String>",
+				"Location": {}
+			}
+		}
+	}
+}
