@@ -21,6 +21,8 @@ dotnet sln add <project>
 
 dotnet sln add 01-LoginBasic/BasicAuthApp/BasicAuthApp.csproj
 dotnet sln add 03-IdentityRolesAndClaimPolicies\IdentityRolesAndClaims\IdentityRolesAndClaims.csproj
+dotnet sln add 04-CustomJWT\CustomJWT\CustomJWT.csproj
+dotnet sln add 05-CustomJWTWithRefresh\CustomJWTWithRefresh\CustomJWTWithRefresh.csproj
 ```
 
 # Structure project
