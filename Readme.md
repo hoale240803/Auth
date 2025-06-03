@@ -20,6 +20,7 @@ Associate a project into solution
 dotnet sln add <project>
 
 dotnet sln add 01-LoginBasic/BasicAuthApp/BasicAuthApp.csproj
+dotnet sln add 03-IdentityRolesAndClaimPolicies\IdentityRolesAndClaims\IdentityRolesAndClaims.csproj
 ```
 
 # Structure project

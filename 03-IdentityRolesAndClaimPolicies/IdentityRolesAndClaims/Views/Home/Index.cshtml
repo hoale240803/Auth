@@ -1,0 +1,30 @@
+﻿<h2>Welcome, @User.Identity.Name!</h2>
+<ul>
+    @if (User.HasClaim("Permission", "Asset.View"))
+    {
+        <li><a href="@Url.Action("View", "Asset")">View Assets</a></li>
+    }
+    @if (User.HasClaim("Permission", "Asset.Create"))
+    {
+        <li><a href="@Url.Action("Create", "Asset")">Create Asset</a></li>
+    }
+    @if (User.HasClaim("Permission", "Asset.Edit"))
+    {
+        <li><a href="@Url.Action("Edit", "Asset")">Edit Asset</a></li>
+    }
+    @if (User.HasClaim("Permission", "Asset.Delete"))
+    {
+        <li><a href="@Url.Action("Delete", "Asset")">Delete Asset</a></li>
+    }
+    @if (User.HasClaim("Permission", "Asset.Comment"))
+    {
+        <li><a href="@Url.Action("Comment", "Asset")">Comment on Asset</a></li>
+    }
+    @if (User.HasClaim("Permission", "User.Manage"))
+    {
+        <li><a href="@Url.Action("ManageUsers", "Asset")">Manage Users</a></li>
+    }
+</ul>
+<form method="post" action="@Url.Action("Logout", "Account")">
+    <button type="submit">Logout</button>
+</form>
