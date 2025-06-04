@@ -24,6 +24,7 @@ dotnet sln add 03-IdentityRolesAndClaimPolicies\IdentityRolesAndClaims\IdentityR
 dotnet sln add 04-CustomJWT\CustomJWT\CustomJWT.csproj
 dotnet sln add 05-CustomJWTWithRefresh\CustomJWTWithRefresh\CustomJWTWithRefresh.csproj
 dotnet sln add 06-2FA-TOTP/CustomJWTWith2FA/CustomJWTWith2FA.csproj
+dotnet sln add 07-CustomJWTWithSessionManagement/CustomJWTWithSessionManagement/CustomJWTWithSessionManagement.csproj
 ```
 
 # Structure project
@@ -41,7 +42,6 @@ AuthLab.sln
 ├── 08-SessionManagement/
 ├── 09-Lockout-Captcha/
 └── 10-MultiTenantAuth/
-
 ```
 
 Authentication Learning

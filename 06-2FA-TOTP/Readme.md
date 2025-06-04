@@ -14,7 +14,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package System.IdentityModel.Tokens.Jwt
-dotnet add package OtpNet
+dotnet add package Otp.NET
 dotnet add package QRCoder
 dotnet add package Scalar.AspNetCore
 ```

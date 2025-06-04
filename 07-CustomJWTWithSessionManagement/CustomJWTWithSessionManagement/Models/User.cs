@@ -1,0 +1,58 @@
+using System.Security.Cryptography;
+using System.Text;
+
+namespace CustomJWTWithSessionManagement.Models
+{
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public string Role { get; set; }
+        public bool Is2FAEnabled { get; set; }
+        public string TwoFactorSecret { get; set; }
+        public List<Session> Sessions { get; set; } = new List<Session>();
+    }
+
+    public class Session
+    {
+        public int Id { get; set; }
+        public string SessionToken { get; set; }
+        public DateTime LoginTimestamp { get; set; }
+        public string IpAddress { get; set; }
+        public string UserAgent { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime? LastActivity { get; set; }
+        public string DeviceFingerprint { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
+        public RefreshToken RefreshToken { get; set; } // One-to-one
+    }
+
+    public class RefreshToken
+    {
+        public int Id { get; set; }
+        public string Token { get; set; }
+        public DateTime Expires { get; set; }
+        public bool IsRevoked { get; set; }
+        public int SessionId { get; set; }
+        public Session Session { get; set; }
+    }
+
+    public static class PasswordHelper
+    {
+        public static (byte[] hash, byte[] salt) HashPassword(string password)
+        {
+            using var pbkdf2 = new Rfc2898DeriveBytes(password, 16, 100000, HashAlgorithmName.SHA256);
+            return (pbkdf2.GetBytes(32), pbkdf2.Salt);
+        }
+
+        public static bool VerifyPassword(string password, byte[] storedHash, byte[] storedSalt)
+        {
+            using var pbkdf2 = new Rfc2898DeriveBytes(password, storedSalt, 100000, HashAlgorithmName.SHA256);
+            var hash = pbkdf2.GetBytes(32);
+            return CryptographicOperations.FixedTimeEquals(hash, storedHash);
+        }
+    }
+}

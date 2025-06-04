@@ -1,0 +1,6 @@
+@CustomJWTWithSessionManagement_HostAddress = http://localhost:5078
+
+GET {{CustomJWTWithSessionManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
